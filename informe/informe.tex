@@ -1,0 +1,72 @@
+\documentclass[10pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[paper=a4paper, left=1.5cm, right=1.5cm, bottom=1.5cm, top=3.5cm]{geometry}
+\usepackage[spanish]{babel}
+\usepackage{indentfirst}
+\usepackage{fancyhdr}
+\usepackage{latexsym}
+\usepackage{lastpage}
+\usepackage[colorlinks=true, linkcolor=blue]{hyperref}
+\usepackage{calc}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{amsfonts}
+\usepackage{float}
+\setcounter{tocdepth}{5}
+\sloppy
+
+\parskip=5pt % 10pt es el tamaño de fuente
+
+% Pongo en 0 la distancia extra entre ítemes.
+\let\olditemize\itemize
+\def\itemize{\olditemize\itemsep=0pt}
+
+\usepackage{caratula}
+
+% Acomodo fancyhdr.
+\pagestyle{fancy}
+\thispagestyle{fancy}
+\addtolength{\headheight}{1pt}
+\lhead{S. Aboy, E. Almansi, F. Canay, F. Decroix}
+\rhead{$2^{\mathrm{do}}$ cuatrimestre de 2014}
+\cfoot{\thepage /\pageref{LastPage}}
+\rfoot{Trabajo Práctico 1 - Wiretapping}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\begin{document}
+
+
+\titulo{Trabajo Práctico 1 - Wiretapping}
+\fecha{Martes 23 de Septiembre}
+\materia{Teoría de las Comunicaciones}
+\integrante{Santiago Aboy Solanes}{175/12}{santiaboy2@hotmail.com}
+\integrante{Emilio Almansi}{674/12}{ealmansi@gmail.com}
+\integrante{Federico Canay}{250/12}{fcanay@hotmail.com}
+\integrante{Facundo Decroix}{842/11}{fndecroix92@hotmail.com}
+
+%Pagina de titulo e indice
+\thispagestyle{empty}
+
+\maketitle
+
+%\thispagestyle{empty}
+%\mbox{}
+%\newpage
+\thispagestyle{empty}
+\tableofcontents
+
+\newpage
+
+\section{Introducción}
+En este trabajo práctico vamos a abordar el desarrollo de herramientas de diagnóstico de red. Nuestro objetivo va a ser analizar estadísticamente el protocolo ARP. Por otro lado, vamos a sacar conclusiones acerca de los tipos de dispositivos de red que se pueden encontrar en un segumento de red determinado. Para ello, utilizamos la herramienta de manipulación y análisis de paquetes, Scapy.
+
+\section{Desarrollo}
+
+
+\section{Conclusión}
+Como conclusión, queremos recalcar que ALGO IMPORTANTE.
+
+Como pudimos ver en los experimentos, creemos que es importante saber que OTRA COSA IMPORTANTE.
+
+Para finalizar, en este trabajo práctico aprendimos que LA AMISTAD RESUELVE TODOS LOS PROBLEMAS.
+\end{document}	
