@@ -60,5 +60,5 @@ def compute_entropy(hist, info, total):
   return entropy
 
 if __name__ == '__main__':
-  # ej1()
-  ej2()
+  ej1()
+  #ej2()
