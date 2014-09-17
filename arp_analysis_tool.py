@@ -38,7 +38,7 @@ def print_indicators(source, hist, info, entropy):
 
 def plot_histogram(source, hist):
   hist = { k:v for (k,v) in hist.iteritems() if 2 < v }
-  x, y = [2 * i for i in range(len(hist))], hist.values()
+  x, y = [4 * i for i in range(len(hist))], hist.values()
   labels = hist.keys()
   f = plt.figure(source, [12, 6])
   plt.xlim([-2, x[-1] + 2])
