@@ -33,9 +33,9 @@ def compute_source_indicators(source):
   
 def print_indicators(source, hist, info, entropy):
   print source
-  print "  hist ", hist
-  print "  info ", info
-  print "  entropy ", entropy
+  print "  - hist: ", hist
+  print "  - info: ", info
+  print "  - entropy: ", entropy
   print ""
 
 def plot_histogram(source, hist):
