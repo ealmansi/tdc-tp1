@@ -4,6 +4,7 @@ import sys;
 import time;
 import math;
 import matplotlib.pyplot as plt;
+import pydot;
 
 def main():
   s_src, s_dst = read_data()
@@ -13,6 +14,7 @@ def main():
   hist, info, entropy = compute_source_indicators(s_dst)
   print_indicators('s_dst', hist, info, entropy)
   plot_histogram('s_dst', hist)
+  plot_network(s_src, s_dst)
 
 def read_data():
   s_src, s_dst = [], []
@@ -37,7 +39,8 @@ def print_indicators(source, hist, info, entropy):
   print ""
 
 def plot_histogram(source, hist):
-  hist = { k:v for (k,v) in hist.iteritems() if 2 < v }
+  if len(hist) > 10:
+    hist = { k:v for (k,v) in hist.iteritems() if 2 < v }
   x, y = [4 * i for i in range(len(hist))], hist.values()
   labels = hist.keys()
   f = plt.figure(source, [12, 6])
@@ -48,6 +51,24 @@ def plot_histogram(source, hist):
   plt.xlabel("IP")
   plt.ylabel("Cantidad de paquetes")
   f.savefig('imgs/{source}.png'.format(source=source))
+
+def plot_network(s_src, s_dst):
+  graph = pydot.Dot(graph_type='digraph')
+  nodes = {}
+  for ip in set(s_src + s_dst):
+    pieces = ip.split('.')
+    label = '.'.join(pieces[0:2]) + '\n' + '.'.join(pieces[2:4])
+    nodes[ip] = pydot.Node(label)
+  edges = {}
+  for i in range(len(s_src)):
+    if not (s_src[i], s_dst[i]) in edges:
+      edges[(s_src[i], s_dst[i])] = 0
+    edges[(s_src[i], s_dst[i])] += 1
+  for (src_ip, dst_ip) in edges:
+    if not(len(nodes) > 10) or edges[(src_ip, dst_ip)] > 2:
+      graph.add_edge(pydot.Edge(nodes[src_ip], nodes[dst_ip],
+        label=edges[(src_ip, dst_ip)], fontsize="8.0", color="blue"))
+  graph.write_png('imgs/red.png')
 
 def compute_histogram(ips):
   hist = {}
