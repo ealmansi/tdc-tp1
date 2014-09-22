@@ -74,7 +74,7 @@ def plot_info(source, hist, entropy, basename):
   f = plt.figure('info_{source}'.format(source=source), [12, 12])
   plt.xlim([-2, x[-1] + 2])
   plt.bar(x, y, align='center')
-  plt.axhline(entropy, color='r')
+  plt.axhline(entropy, color='r',label='entropia')
   plt.xticks(x, labels, size='small',rotation='vertical')
   plt.title('Informacion: {source}'.format(source=source))
   plt.xlabel("IP")
