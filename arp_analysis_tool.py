@@ -7,7 +7,7 @@ import os;
 import re;
 import argparse;
 import matplotlib.pyplot as plt;
-import pydot;
+#import pydot;
 
 def main():
   args = parse_args()
@@ -21,7 +21,7 @@ def main():
   print_indicators('s_dst', hist, info, entropy)
   plot_histogram('s_dst', hist, basename)
   plot_info('s_dst', info, entropy, basename)
-  plot_network(s_src, s_dst, basename)
+  #plot_network(s_src, s_dst, basename)
 
 def parse_args():
   parser = argparse.ArgumentParser(description='ARP packet analysis.')
@@ -73,7 +73,7 @@ def plot_info(source, hist, entropy, basename):
   labels = hist.keys()
   f = plt.figure('info_{source}'.format(source=source), [12, 12])
   plt.xlim([-2, x[-1] + 2])
-  plt.bar(x, y, align='center')
+  plt.bar(x, y, align='center', color="green")
   plt.axhline(entropy, color='r',label='entropia')
   plt.xticks(x, labels, size='small',rotation='vertical')
   plt.title('Informacion: {source}'.format(source=source))
@@ -94,9 +94,8 @@ def plot_network(s_src, s_dst, basename):
       edges[(s_src[i], s_dst[i])] = 0
     edges[(s_src[i], s_dst[i])] += 1
   for (src_ip, dst_ip) in edges:
-    if not(len(nodes) > 10) or edges[(src_ip, dst_ip)] > 2:
-      graph.add_edge(pydot.Edge(nodes[src_ip], nodes[dst_ip],
-        label=edges[(src_ip, dst_ip)], fontsize="8.0", color="blue"))
+    graph.add_edge(pydot.Edge(nodes[src_ip], nodes[dst_ip],
+      label=edges[(src_ip, dst_ip)], fontsize="8.0", color="blue"))
   graph.write_png('imgs/{basename}_red.png'.format(basename=basename))
 
 def compute_histogram(ips):
