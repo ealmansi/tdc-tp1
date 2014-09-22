@@ -101,11 +101,12 @@ Una vez que capturamos el tráfico, nos propusimos gráficar y a analizar los da
 
 \subsection{Red Alto Palermo}
 
-\subsubsection{Descripción}
+\subsubsection{Descripción y topología de la red}
 
 lugar, dia de la semana, hora aproximada, fecha, wifi o ethernet
 cantidad de paquetes tomados, tiempo de muestreo
 
+<<<<<<< HEAD
 Nuestro primer experimento consistió en medir la LAN Wi-Fi pública del shopping Alto Palermo. Esta medición se llevó a cabo el Sábado 20 de Septiembre a las 21hs, el tiempo de medición fue de aproximádamente 40 minutos y se capturaron 1569 paquetes ARP.
 
 
@@ -122,6 +123,9 @@ A continuación mostramos un grafo que muestra los nodos de la red con su direcc
 \end{figure}
 
 Como podemos ver en el grafo, la red tiene un nodo distinguido. Este nodo, el cual tiene la dirección IP 117.17.12.1, recibe muchos mensajes de la mayoría de los otros nodos de la red, pero no envía ninguno. Suponemos que este nodo es el router de la red.
+=======
+grafico del grafo de la red
+>>>>>>> 30e0a03957f1c2c4bd655daba994ab18b0be3ccd
 
 \subsubsection{Fuente: $S_{dst}$}
 
@@ -133,9 +137,13 @@ histograma
 grafico de informacion
 entropía total
 
+\subsubsection{Discusión}
+
+cualquier cosa interesante sobre este caso en particular
+
 \subsection{Red Honeywell}
 
-\subsubsection{Descripción}
+\subsubsection{Descripción y topología de la red}
 
 lugar, dia de la semana, hora aproximada, fecha, wifi o ethernet
 cantidad de paquetes tomados, tiempo de muestreo
@@ -144,13 +152,11 @@ Nuestro seundo experimento consistió en capturar los paquetes de la LAN de la e
  
 \begin{figure}
  \begin{center}
-  \includegraphics[]{../imgs/prueba_laburo-ips_red.png}
+  \includegraphics[width=\linewidth]{../imgs/prueba_laburo-ips_red.png}
   \caption{Medición Honeywell}
  \end{center}
 \end{figure}
 
-\subsubsection{Topología de la red}
-
 grafico del grafo de la red
 
 \subsubsection{Fuente: $S_{dst}$}
@@ -164,40 +170,73 @@ entropía total
 histograma
 grafico de informacion
 entropía total
+
+\subsubsection{Discusión}
+
+cualquier cosa interesante sobre este caso en particular
 
 \subsection{Red Laboratorios DC}
 
-\subsubsection{Descripción}
+\subsubsection{Descripción y topología de la red}
 
-Realizamos una captura en la red Wi-Fi \emph{}
+Realizamos una captura en la red Wi-Fi \emph{Entrepiso-DC}, disponible desde los laboratorios del Depto. de Computación. La muestra fue tomada un lunes a las 17hs aproximadamente -horario típicamente de alto tráfico-, logrando un total de XX paquetes en MM minutos.
 
-lugar, dia de la semana, hora aproximada, fecha, wifi o ethernet
-cantidad de paquetes tomados, tiempo de muestreo
+En el gráfico de la figura \ref{fig:entrepiso-dc-grafo} se presenta el grafo dirigido representando la red. En el mismo se observa una gran cantidad de nodos ligada al nodo con IP 10.1.200.197, y luego múltiples conjuntos pequeños de nodos conectados entre sí pero disconexos de la estructura mayoritaria.
 
-\subsubsection{Topología de la red}
-
-grafico del grafo de la red
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=0.8\linewidth]{../imgs/entrepiso-dc-ips_red.png}
+    \caption{Grafo mostrando la topología de la red \emph{Entrepiso-DC}.}
+    \label{fig:entrepiso-dc-grafo}
+  \end{center}
+\end{figure}
 
 \subsubsection{Fuente: $S_{dst}$}
 
-histograma
-grafico de informacion
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=0.8\linewidth]{../imgs/entrepiso-dc-ips_s_dst_hist.png}
+    \caption{Histograma de la serie de paquetes s\_dst de la red \emph{Entrepiso-DC}.}
+    \label{fig:histograma-entrepiso-dc-s-dst}
+  \end{center}
+\end{figure}
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=0.8\linewidth]{../imgs/entrepiso-dc-ips_s_dst_info.png}
+    \caption{Gráfico de cantidad de información para cada IP s\_dst de la red \emph{Entrepiso-DC}.}
+    \label{fig:informacion-entrepiso-dc-s-dst}
+  \end{center}
+\end{figure}
 entropía total
 
 \subsubsection{Fuente: $S_{src}$}
 
-histograma
-grafico de informacion
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=0.8\linewidth]{../imgs/entrepiso-dc-ips_s_src_hist.png}
+    \caption{Histograma de la serie de paquetes s\_src de la red \emph{Entrepiso-DC}.}
+    \label{fig:histograma-entrepiso-dc-s-src}
+  \end{center}
+\end{figure}
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=0.8\linewidth]{../imgs/entrepiso-dc-ips_s_dst_info.png}
+    \caption{Gráfico de cantidad de información para cada IP s\_dst de la red \emph{Entrepiso-DC}.}
+    \label{fig:informacion-entrepiso-dc-s-dst}
+  \end{center}
+\end{figure}
 entropía total
+
+\subsubsection{Discusión}
+
+cualquier cosa interesante sobre este caso en particular
 
 \subsection{Red hogareña}
 
 \subsubsection{Descripción}
+Para nuestro último experimento, capturamos el tráfico de la LAN de un integrante de nuestro grupo. Medimos el Miércoles 17 de Septiembre a las 00:00 utilizando la red Wi-Fi. El tiempo de medición fue de aproximadamente 40 minutos, y capturamos aproximadamente 20 paquetes.
 
-lugar, dia de la semana, hora aproximada, fecha, wifi o ethernet
-cantidad de paquetes tomados, tiempo de muestreo
-
-Capturamos el tráfico de la LAN de un integrante de nuestro grupo. A continuación presentamos un grafo que muestra el pasaje de paquetes ARP entre las distintas IPs.
+\subsubsection{Topología de la red}
 
 \begin{figure}[H]
   \begin{center}
@@ -207,35 +246,41 @@ Capturamos el tráfico de la LAN de un integrante de nuestro grupo. A continuaci
   \end{center}
 \end{figure}
 
-
- % \begin{figure}[H]
- %   \begin{minipage}{0.5\linewidth}
- %     \includegraphics[width=\linewidth]{graficos/goloso_tiempo.eps}
- %     \caption{Tiempo ejecución goloso}\label{fig:goloso-tiempo}
- %   \end{minipage}
- %  \hfill
- %   \begin{minipage}{0.5\linewidth}
- %     \includegraphics[width=\linewidth]{graficos/goloso_tiempo_div_n.eps}
- %     \caption{Tiempo de goloso dividido n}\label{fig:goloso-tiempo-n}
- %   \end{minipage}
- % \end{figure}
-
-
-\subsubsection{Topología de la red}
-
-grafico del grafo de la red
-
 \subsubsection{Fuente: $S_{dst}$}
 
-histograma
-grafico de informacion
-entropía total
+$\bullet$ Entropía de la fuente: 1.49046857073
+
+\begin{figure}[H]
+  \begin{minipage}{0.5\linewidth}
+    \includegraphics[width=\linewidth]{../imgs/pruebaFede-ips_s_dst_hist.png}
+    \caption{Histograma de $S_{dst}$}\label{fig:Fede-dst-hist}
+  \end{minipage}
+\hfill
+  \begin{minipage}{0.5\linewidth}
+    \includegraphics[width=\linewidth]{../imgs/pruebaFede-ips_s_dst_info.png}
+    \caption{Informacion de $S_{dst}$}\label{fig:Fede-dst-info}
+  \end{minipage}
+\end{figure}
 
 \subsubsection{Fuente: $S_{src}$}
 
-histograma
-grafico de informacion
-entropía total
+$\bullet$ Entropía de la fuente: 1.19176014818
+
+\begin{figure}[H]
+  \begin{minipage}{0.5\linewidth}
+    \includegraphics[width=\linewidth]{../imgs/pruebaFede-ips_s_src_hist.png}
+    \caption{Histograma de $S_{src}$}\label{fig:Fede-src-hist}
+  \end{minipage}
+\hfill
+  \begin{minipage}{0.5\linewidth}
+    \includegraphics[width=\linewidth]{../imgs/pruebaFede-ips_s_src_info.png}
+    \caption{Informacion de $S_{src}$}\label{fig:Fede-src-info}
+  \end{minipage}
+\end{figure}
+
+\subsubsection{Discusión}
+
+cualquier cosa interesante sobre este caso en particular
 
 \section{Discusión general}
 
