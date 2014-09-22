@@ -198,39 +198,68 @@ Como podemos observar en la Figura \ref{fig:Fede-src-info}, el router es un nodo
 
 \subsubsection{Descripción}
 
-lugar, dia de la semana, hora aproximada, fecha, wifi o ethernet
-cantidad de paquetes tomados, tiempo de muestreo
-
 Nuestro primer experimento consistió en medir la LAN Wi-Fi pública del shopping Alto Palermo. Esta medición se llevó a cabo el Sábado 20 de Septiembre a las 21hs, el tiempo de medición fue de aproximádamente 40 minutos y se capturaron 1569 paquetes ARP.
 
+Sin embargo, para graficar decidimos usar sólo los primeros 80 paquetes capturados, ya que los graficos con una cantidad tan grande de paquetes eran poco legibles.
 
 \subsubsection{Topología de los paquetes}
 
 A continuación mostramos un grafo que muestra los nodos de la red con su dirección IP y la cantidad de mensajes de tipo \emph{who-has}.
 
-\begin{figure}
+\begin{figure}[H]
  \begin{center}
-  \includegraphics[width=\linewidth/2]{../imgs/snifAlto-ips_red.png}
+  \includegraphics[width=\linewidth]{../imgs/snifAlto-ips_red.png}
   \caption{Grafo Medición Alto Palermo}
  \end{center}
 
 \end{figure}
 
-Como podemos ver en el grafo, la red tiene un nodo distinguido. Este nodo, el cual tiene la dirección IP 117.17.12.1, recibe muchos mensajes de la mayoría de los otros nodos de la red, pero no envía ninguno. Suponemos que este nodo es el router de la red.
+Como podemos ver en el grafo, la red tiene dos nodos que se destacan. Uno de estos nodos, el cual tiene la dirección IP 117.17.12.1, recibe muchos paquetes de la mayoría de los otros nodos de la red, pero no envía ninguno. Y el otro recibe varios paquetes y también envía varios. Suponemos que estos nodos son los router de la red.
 
 \subsubsection{Fuente: $S_{dst}$}
 
-A contincuación mostramos los gráficos 
+A continuación incluimos dos gráficos. Uno de éstos es un histograma que muestra cuántas veces apareció cada símbolo en la fuente. El otro, muestra la cantidad de información de cada símbolo de la fuente $S_{dst}$ en comparación con la entropía de la misma. 
 
+\begin{figure}[H]
+   \begin{minipage}{0.5\linewidth}
+     \includegraphics[width=\linewidth]{../imgs/snifAlto-ips_s_dst_hist.png}
+     \caption{Medición Alto Palermo}\label{fig:Alto-dst-hist}
+   \end{minipage}
+  \hfill
+   \begin{minipage}{0.5\linewidth}
+     \includegraphics[width=\linewidth]{../imgs/snifAlto-ips_s_dst_info.png}
+     \caption{Medición Información Alto Palermo}\label{fig:Alto-dst-info}
+   \end{minipage}
+ \end{figure}
+
+Como podemos observar en el primer gráfico, la dirección IP= 177.17.12.1 aparece muchas mas veces que el resto de las IP. Esto es así porque, como vimos en el grafo de la sección anterior, dicha dirección recibe mensajes de casi todos los demás nodos de la red.
+
+En el segundo gráfico podemos ver que la cantidad de información que aporta la dirección IP=177.17.12.1 es más baja que la entopía de la fuente. Concluimos entonces que el nodo de la red que tiene la dirección IP=177.17.12.1 se trata de un nodo distinguido.
+ 
+ 
 \subsubsection{Fuente: $S_{src}$}
 
-histograma
-grafico de informacion
-entropía total
+A contincuación mostramos gráficos similares, pero esta vez para la fuente $S_{src}$:
 
+\begin{figure}[H]
+   \begin{minipage}{0.5\linewidth}
+     \includegraphics[width=\linewidth]{../imgs/snifAlto-ips_s_src_hist.png}
+     \caption{Medición Honeywell}\label{fig:Alto-src-hist}
+   \end{minipage}
+  \hfill
+   \begin{minipage}{0.5\linewidth}
+     \includegraphics[width=\linewidth]{../imgs/snifAlto-ips_s_src_info.png}
+     \caption{Medición Honeywell}\label{fig:Alto-src-info}
+   \end{minipage}
+ \end{figure}
+
+En estos gráficos podemos observar que hay un nodo que envía muchos más paquetes que el resto de los nodos. Dicho nodo tiene la dirección IP 172.17.12.2. En el segundo gráfico podemos observar que la cantidad de información del símbolo 172.17.12.2 en la fuente $S_{src}$ es menor que su entropía.
+
+Además podemos ver que hay otro nodo distinguido en esta fuente, el nodo que tiene la IP 172.17.12.135. Sin embargo, podemos ver que este nodo manda menos paquetes que el nodo 172.17.12.2.
+ 
 \subsubsection{Discusión}
 
-cualquier cosa interesante sobre este caso en particular
+
 
 \subsection{Red Honeywell}
 
