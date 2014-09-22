@@ -6,7 +6,7 @@ import math;
 import os;
 import argparse;
 import matplotlib.pyplot as plt;
-import pydot;
+#import pydot;
 
 def main():
   args = parse_args()
@@ -14,10 +14,12 @@ def main():
   hist, info, entropy = compute_source_indicators(s_src)
   print_indicators('s_src', hist, info, entropy)
   plot_histogram('s_src', hist)
+  plot_info('src_info', info, entropy)
   hist, info, entropy = compute_source_indicators(s_dst)
   print_indicators('s_dst', hist, info, entropy)
   plot_histogram('s_dst', hist)
-  plot_network(s_src, s_dst)
+  plot_info('dst_info', info, entropy)
+  #plot_network(s_src, s_dst)
 
 def parse_args():
   parser = argparse.ArgumentParser(description='ARP packet analysis.')
@@ -57,11 +59,25 @@ def plot_histogram(source, hist):
   f = plt.figure(source, [12, 6])
   plt.xlim([-2, x[-1] + 2])
   plt.bar(x, y, align='center')
-  plt.xticks(x, labels, size='small')
+  plt.xticks(x, labels, size='small', rotation='vertical')
   plt.title(source)
   plt.xlabel("IP")
   plt.ylabel("Cantidad de paquetes")
   f.savefig('imgs/{source}.png'.format(source=source))
+
+def plot_info(source, hist, entropy):
+  x, y = [4 * i for i in range(len(hist))], hist.values()
+  labels = hist.keys()
+  f = plt.figure(source, [12, 6])
+  plt.xlim([-2, x[-1] + 2])
+  plt.bar(x, y, align='center')
+  plt.axhline(entropy, color='r')
+  plt.xticks(x, labels, size='small',rotation='vertical')
+  plt.title(source)
+  plt.xlabel("IP")
+  plt.ylabel("Informacion")
+  f.savefig('imgs/{source}.png'.format(source=source))
+
 
 def plot_network(s_src, s_dst):
   graph = pydot.Dot(graph_type='digraph')
