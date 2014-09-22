@@ -3,11 +3,14 @@
 import sys;
 import time;
 import math;
+import os;
+import argparse;
 import matplotlib.pyplot as plt;
 import pydot;
 
 def main():
-  s_src, s_dst = read_data()
+  args = parse_args()
+  s_src, s_dst = read_data(args)
   hist, info, entropy = compute_source_indicators(s_src)
   print_indicators('s_src', hist, info, entropy)
   plot_histogram('s_src', hist)
@@ -16,13 +19,21 @@ def main():
   plot_histogram('s_dst', hist)
   plot_network(s_src, s_dst)
 
-def read_data():
+def parse_args():
+  parser = argparse.ArgumentParser(description='ARP packet analysis.')
+  parser.add_argument('datafile', type=str,
+    help = 'data file path')
+  args = vars(parser.parse_args())
+  return args
+
+def read_data(args):
   s_src, s_dst = [], []
-  for line in sys.stdin:
-    pieces = line.split(",")
-    ip_src, ip_dst = pieces[0].strip(), pieces[1].strip()
-    s_src.append(ip_src)
-    s_dst.append(ip_dst)
+  with open(args.get('datafile')) as f:
+    for line in f:
+      pieces = line.split(",")
+      ip_src, ip_dst = pieces[0].strip(), pieces[1].strip()
+      s_src.append(ip_src)
+      s_dst.append(ip_dst)
   return s_src, s_dst
 
 def compute_source_indicators(source):
