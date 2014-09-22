@@ -94,9 +94,8 @@ def plot_network(s_src, s_dst, basename):
       edges[(s_src[i], s_dst[i])] = 0
     edges[(s_src[i], s_dst[i])] += 1
   for (src_ip, dst_ip) in edges:
-    if not(len(nodes) > 10) or edges[(src_ip, dst_ip)] > 2:
-      graph.add_edge(pydot.Edge(nodes[src_ip], nodes[dst_ip],
-        label=edges[(src_ip, dst_ip)], fontsize="8.0", color="blue"))
+    graph.add_edge(pydot.Edge(nodes[src_ip], nodes[dst_ip],
+      label=edges[(src_ip, dst_ip)], fontsize="8.0", color="blue"))
   graph.write_png('imgs/{basename}_red.png'.format(basename=basename))
 
 def compute_histogram(ips):
