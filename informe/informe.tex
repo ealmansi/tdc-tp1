@@ -101,12 +101,10 @@ Una vez que capturamos el tráfico, nos propusimos gráficar y a analizar los da
 
 \subsection{Red Alto Palermo}
 
-\subsubsection{Descripción}
+\subsubsection{Descripción y topología de la red}
 
 lugar, dia de la semana, hora aproximada, fecha, wifi o ethernet
 cantidad de paquetes tomados, tiempo de muestreo
-
-\subsubsection{Topología de la red}
 
 grafico del grafo de la red
 
@@ -122,9 +120,13 @@ histograma
 grafico de informacion
 entropía total
 
+\subsubsection{Discusión}
+
+cualquier cosa interesante sobre este caso en particular
+
 \subsection{Red Honeywell}
 
-\subsubsection{Descripción}
+\subsubsection{Descripción y topología de la red}
 
 lugar, dia de la semana, hora aproximada, fecha, wifi o ethernet
 cantidad de paquetes tomados, tiempo de muestreo
@@ -138,8 +140,6 @@ Nuestro seundo experimento consistió en capturar los paquetes de la LAN de la e
  \end{center}
 \end{figure}
 
-\subsubsection{Topología de la red}
-
 grafico del grafo de la red
 
 \subsubsection{Fuente: $S_{dst}$}
@@ -153,19 +153,26 @@ entropía total
 histograma
 grafico de informacion
 entropía total
+
+\subsubsection{Discusión}
+
+cualquier cosa interesante sobre este caso en particular
 
 \subsection{Red Laboratorios DC}
 
-\subsubsection{Descripción}
+\subsubsection{Descripción y topología de la red}
 
-Realizamos una captura en la red Wi-Fi \emph{}
+Realizamos una captura en la red Wi-Fi \emph{Entrepiso-DC}, disponible desde los laboratorios del Depto. de Computación. La muestra fue tomada un lunes a las 17hs aproximadamente -horario típicamente de alto tráfico-, logrando un total de XX paquetes en MM minutos.
 
-lugar, dia de la semana, hora aproximada, fecha, wifi o ethernet
-cantidad de paquetes tomados, tiempo de muestreo
+En el gráfico de la figura \ref{fig:entrepiso-dc-grafo} se presenta el grafo dirigido representando la red. En el mismo se observa una gran cantidad de nodos ligada al nodo con IP 10.1.200.197, y luego múltiples conjuntos pequeños de nodos conectados entre sí pero disconexos de la estructura mayoritaria.
 
-\subsubsection{Topología de la red}
-
-grafico del grafo de la red
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=0.8\linewidth]{../imgs/entrepiso-dc-ips_red.png}
+    \caption{Grafo mostrando la topología de la red \emph{Entrepiso-DC}.}
+    \label{fig:entrepiso-dc-grafo}
+  \end{center}
+\end{figure}
 
 \subsubsection{Fuente: $S_{dst}$}
 
@@ -178,6 +185,10 @@ entropía total
 histograma
 grafico de informacion
 entropía total
+
+\subsubsection{Discusión}
+
+cualquier cosa interesante sobre este caso en particular
 
 \subsection{Red hogareña}
 
@@ -225,6 +236,10 @@ $\bullet$ Entropía de la fuente: 1.19176014818
     \caption{Informacion de $S_{src}$}\label{fig:Fede-src-info}
   \end{minipage}
 \end{figure}
+
+\subsubsection{Discusión}
+
+cualquier cosa interesante sobre este caso en particular
 
 \section{Discusión general}
 
