@@ -59,19 +59,19 @@ def plot_histogram(source, hist, basename):
     hist = { k:v for (k,v) in hist.iteritems() if 2 < v }
   x, y = [4 * i for i in range(len(hist))], hist.values()
   labels = hist.keys()
-  f = plt.figure('hist_{source}'.format(source=source), [12, 6])
+  f = plt.figure('hist_{source}'.format(source=source), [12, 12])
   plt.xlim([-2, x[-1] + 2])
   plt.bar(x, y, align='center')
   plt.xticks(x, labels, size='small', rotation='vertical')
   plt.title('Histograma: {source}'.format(source=source))
   plt.xlabel("IP")
   plt.ylabel("Cantidad de paquetes")
-  f.savefig('imgs/hist_{basename}_{source}.png'.format(basename=basename, source=source))
+  f.savefig('imgs/{basename}_{source}_hist.png'.format(basename=basename, source=source))
 
 def plot_info(source, hist, entropy, basename):
   x, y = [4 * i for i in range(len(hist))], hist.values()
   labels = hist.keys()
-  f = plt.figure('info_{source}'.format(source=source), [12, 6])
+  f = plt.figure('info_{source}'.format(source=source), [12, 12])
   plt.xlim([-2, x[-1] + 2])
   plt.bar(x, y, align='center')
   plt.axhline(entropy, color='r')
@@ -79,7 +79,7 @@ def plot_info(source, hist, entropy, basename):
   plt.title('Informacion: {source}'.format(source=source))
   plt.xlabel("IP")
   plt.ylabel("Informacion")
-  f.savefig('imgs/info_{basename}_{source}.png'.format(basename=basename, source=source))
+  f.savefig('imgs/{basename}_{source}_info.png'.format(basename=basename, source=source))
 
 def plot_network(s_src, s_dst, basename):
   graph = pydot.Dot(graph_type='digraph')
