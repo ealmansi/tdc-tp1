@@ -13,6 +13,8 @@
 \usepackage{amsfonts}
 \usepackage{float}
 \setcounter{tocdepth}{5}
+\usepackage{caption}
+\usepackage{subcaption}
 \sloppy
 
 \parskip=5pt % 10pt es el tamaño de fuente
@@ -92,20 +94,46 @@ Creamos una \emph{tool} que escucha pasivamente en la red local. Luego, la adapt
 Usando dicha herramienta, realizamos capturas de paquetes ARP sobre distintas LANs: Alto Palermo, Red laboral de Honeywell, Laboratorios de Ciudad Universitaria (Via Wi-Fi), y la casa de un integrante del grupo.
 
 \subsection{Gráficos y análisis}
-Una vez que capturamos el tráfico, nos propusimos gráficar y a analizar los datos obtenidos. Graficamos en forma de histogramas, y de grafos la información y entropía de $S_{dst}$ y $S_{src}$
-% \subsubsection{Red Empresa Honeywell}
-% 
-% Nuestro seundo experimento consistió en capturar los paquetes de la LAN de la empresa Honeywell. A continuación incluímos ..
-% 
-% \begin{figure}
-%  \begin{center}
-%   \includegraphics[]{../imgs/prueba_laburo-ips_red.png}
-%   \caption{Medición Honeywell}
-%  \end{center}
-% 
-% \end{figure}
-% 
 
+Una vez que capturamos el tráfico, nos propusimos gráficar y a analizar los datos obtenidos. Graficamos en forma de histogramas, y de grafos la información y entropía de $S_{dst}$ y $S_{src}$
+
+$\bullet$ Experimento ``Red Hogareña''
+
+Capturamos el tráfico de la LAN de un integrante de nuestro grupo. A continuación presentamos un grafo que muestra el pasaje de paquetes ARP entre las distintas IPs.
+
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=\linewidth/2]{../imgs/pruebaFede-ips_red.png}
+    \label{fig:FedeGrafo}
+    \caption{Grafo de LAN hogareña}
+  \end{center}
+\end{figure}
+
+
+\begin{figure}[H]
+  \begin{minipage}{0.5\linewidth}
+    \includegraphics[width=\linewidth]{graficos/goloso_tiempo.eps}
+    \caption{Tiempo ejecución goloso}\label{fig:goloso-tiempo}
+  \end{minipage}
+ \hfill
+  \begin{minipage}{0.5\linewidth}
+    \includegraphics[width=\linewidth]{graficos/goloso_tiempo_div_n.eps}
+    \caption{Tiempo de goloso dividido n}\label{fig:goloso-tiempo-n}
+  \end{minipage}
+\end{figure}
+
+$\bullet$ Red Empresa Honeywell
+ 
+Nuestro seundo experimento consistió en capturar los paquetes de la LAN de la empresa Honeywell. A continuación incluímos un grafo que muestra los didtintos nodos de la red y los paquetes ARP d
+ 
+\begin{figure}
+ \begin{center}
+  \includegraphics[]{../imgs/prueba_laburo-ips_red.png}
+  \caption{Medición Honeywell}
+ \end{center}
+\end{figure}
+
+ 
 
 \section{Conclusión}
 Como conclusión, queremos recalcar que por lo general los routers son nodos distinguidos en las LANs a las que pertenecen. Esto se mantiene, ya sea una red pública o privada.
