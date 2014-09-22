@@ -93,9 +93,51 @@ Creamos una \emph{tool} que escucha pasivamente en la red local. Luego, la adapt
 
 Usando dicha herramienta, realizamos capturas de paquetes ARP sobre distintas LANs: Alto Palermo, Red laboral de Honeywell, Laboratorios de Ciudad Universitaria (Via Wi-Fi), y la casa de un integrante del grupo.
 
-\subsection{Gráficos y análisis}
+\subsection{Gráficos}
 
-Una vez que capturamos el tráfico, nos propusimos gráficar y a analizar los datos obtenidos. Graficamos en forma de histogramas, y de grafos la información y entropía de $S_{dst}$ y $S_{src}$
+Una vez que capturamos el tráfico, nos propusimos gráficar y a analizar los datos obtenidos. Realizamos tres tipos de gráficos:
+
+$\bullet$ Grafos dirigidos:
+  En los grafos, los nodos son los IPs que aparecen en alguno de los paquetes capturados.
+  Una arista entre A y B significa que se encontro un paquete con \emph{src} A y \emph{dst} B. El peso de cada arista corresponde a la cantidad de paquetes de la forma anterior.
+  
+  Ejemplo:
+  
+  \begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=\linewidth/2]{../imgs/pruebaFede-ips_red.png}
+    \label{fig:FedeGrafo}
+    \caption{Grafo de LAN hogareña}
+  \end{center}
+\end{figure}
+
+$\bullet$ Histograma:
+  Realizamos para cada una de las fuentes (\emph{src} y \emph{dst}), realizamos un histograma que muestra la cantidad de apariciones de un determinado IP en la fuente.
+  
+  Ejemplo:
+  
+  \begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=\linewidth/2]{../imgs/entrepiso-dc-ips_s_src_hist.png}
+    \caption{Histograma de la serie de paquetes s\_src de la red \emph{Entrepiso-DC}.}
+    \label{fig:histograma-entrepiso-dc-s-src}
+  \end{center}
+  \end{figure}
+  
+$\bullet$ Gráfico Información:
+  Realizamos para cada una de las fuentes (\emph{src} y \emph{dst}), realizamos un gráfico donde se muestra la información de un determinado IP en la fuente. Además graficamos una recta con el valor de la entropía para comparar facilmente la información de cada IP con la entropía de la fuente. 
+  
+  Ejemplo:
+  
+  \begin{figure}  
+  \begin{center}
+    \includegraphics[width=\linewidth/2]{../imgs/entrepiso-dc-ips_s_src_info.png}
+    \caption{Gráfico de cantidad de información para cada IP s\_src de la red \emph{Entrepiso-DC}.}
+    \label{fig:informacion-entrepiso-dc-s-src}
+  \end{center}
+\end{figure}
+  
+Graficamos en forma de histogramas, y de grafos la información y entropía de $S_{dst}$ y $S_{src}$
 
 \section{Resultados}
 
@@ -115,7 +157,7 @@ A continuación mostramos un grafo que muestra los nodos de la red con su direcc
 
 \begin{figure}
  \begin{center}
-  \includegraphics[width=\linewidth/2]{../imgs/sinfAlto-ips_red.png}
+  \includegraphics[width=\linewidth/2]{../imgs/snifAlto-ips_red.png}
   \caption{Grafo Medición Alto Palermo}
  \end{center}
 
