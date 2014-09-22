@@ -27,7 +27,7 @@
 \pagestyle{fancy}
 \thispagestyle{fancy}
 \addtolength{\headheight}{1pt}
-\lhead{S. Aboy, E. Almansi, F. Canay, F. Decroix}
+\lhead{S. Aboy Solanes, E. Almansi, F. Canay, F. Decroix}
 \rhead{$2^{\mathrm{do}}$ cuatrimestre de 2014}
 \cfoot{\thepage /\pageref{LastPage}}
 \rfoot{Trabajo Práctico 1 - Wiretapping}
@@ -62,6 +62,21 @@ En este trabajo práctico vamos a abordar el desarrollo de herramientas de diagn
 
 \section{Desarrollo}
 
+\subsection{Capturando tráfico}
+Para el desarrollo de este trabajo práctico escuchamos pasivamente redes para poder observar que sucedía en las mismas. En particular, capturamos paquetes ARP \emph{who-has}.
+
+Utilizamos dos modelos de fuente de información:
+
+$S_{dst}$ = \{$s_1$ $\cdots$ $s_n$\} siendo $s_i$ una IP que aparece como dirección destino en los paquetes ARP \emph{who-has}
+
+$S_{src}$ = \{$s_1$ $\cdots$ $s_n$\} siendo $s_i$ una IP que aparece como dirección origen en los paquetes ARP \emph{who-has}
+
+Creamos una \emph{tool} que escucha pasivamente en la red local. Luego, la adaptamos para que estime las probabilidades de dichas fuentes en función de los paquetes ARP observados y que calcule la entropía de las mismas.
+
+Usando dicha herramienta, realizamos capturas de paquetes ARP sobre distintas LANs: Alto Palermo, Red laboral de Honeywell, Laboratorios de Ciudad Universitaria (Via Wi-Fi), y la casa de un integrante del grupo.
+
+\subsection{Gráficos y análisis}
+Una vez que capturamos el tráfico, nos propusimos gráficar y a analizar los datos obtenidos. Graficamos en forma de histogramas, y de grafos la información y entropía de $S_{dst}$ y $S_{src}$
 
 \section{Conclusión}
 Como conclusión, queremos recalcar que ALGO IMPORTANTE.
