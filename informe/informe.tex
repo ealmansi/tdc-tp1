@@ -106,15 +106,26 @@ Una vez que capturamos el tráfico, nos propusimos gráficar y a analizar los da
 lugar, dia de la semana, hora aproximada, fecha, wifi o ethernet
 cantidad de paquetes tomados, tiempo de muestreo
 
+Nuestro primer experimento consistió en medir la LAN Wi-Fi pública del shopping Alto Palermo. Esta medición se llevó a cabo el Sábado 20 de Septiembre a las 21hs, el tiempo de medición fue de aproximádamente 40 minutos y se capturaron 1569 paquetes ARP.
+
+
 \subsubsection{Topología de la red}
 
-grafico del grafo de la red
+A continuación mostramos un grafo que muestra los nodos de la red con su dirección IP y la cantidad de mensajes de tipo \emph{who-has}.
+
+\begin{figure}
+ \begin{center}
+  \includegraphics[width=\linewidth/2]{../imgs/sinfAlto-ips_red.png}
+  \caption{Grafo Medición Alto Palermo}
+ \end{center}
+
+\end{figure}
+
+Como podemos ver en el grafo, la red tiene un nodo distinguido. Este nodo, el cual tiene la dirección IP 117.17.12.1, recibe muchos mensajes de la mayoría de los otros nodos de la red, pero no envía ninguno. Suponemos que este nodo es el router de la red.
 
 \subsubsection{Fuente: $S_{dst}$}
 
-histograma
-grafico de informacion
-entropía total
+A contincuación mostramos los gráficos 
 
 \subsubsection{Fuente: $S_{src}$}
 
