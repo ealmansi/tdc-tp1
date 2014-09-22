@@ -141,26 +141,79 @@ Graficamos en forma de histogramas, y de grafos la información y entropía de $
 
 \section{Resultados}
 
+\subsection{Red hogareña}
+
+\subsubsection{Descripción y topología de los paquetes}
+
+Para nuestro último experimento, capturamos el tráfico de la LAN de un integrante de nuestro grupo. Medimos el Miércoles 17 de Septiembre a las 00:00 utilizando la red Wi-Fi. El tiempo de medición fue de aproximadamente 40 minutos, y capturamos aproximadamente 20 paquetes.
+
+\subsubsection{Topología de los paquetes}
+
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=\linewidth/2]{../imgs/pruebaFede-ips_red.png}
+    \label{fig:FedeGrafo}
+    \caption{Grafo de LAN hogareña}
+  \end{center}
+\end{figure}
+
+\subsubsection{Fuente: $S_{dst}$}
+
+$\bullet$ Entropía de la fuente: 1.49046857073
+
+\begin{figure}[H]
+  \begin{minipage}{0.5\linewidth}
+    \includegraphics[width=\linewidth]{../imgs/pruebaFede-ips_s_dst_hist.png}
+    \caption{Histograma de $S_{dst}$}\label{fig:Fede-dst-hist}
+  \end{minipage}
+\hfill
+  \begin{minipage}{0.5\linewidth}
+    \includegraphics[width=\linewidth]{../imgs/pruebaFede-ips_s_dst_info.png}
+    \caption{Informacion de $S_{dst}$}\label{fig:Fede-dst-info}
+  \end{minipage}
+\end{figure}
+
+\subsubsection{Fuente: $S_{src}$}
+
+$\bullet$ Entropía de la fuente: 1.19176014818
+
+\begin{figure}[H]
+  \begin{minipage}{0.5\linewidth}
+    \includegraphics[width=\linewidth]{../imgs/pruebaFede-ips_s_src_hist.png}
+    \caption{Histograma de $S_{src}$}\label{fig:Fede-src-hist}
+  \end{minipage}
+\hfill
+  \begin{minipage}{0.5\linewidth}
+    \includegraphics[width=\linewidth]{../imgs/pruebaFede-ips_s_src_info.png}
+    \caption{Informacion de $S_{src}$}\label{fig:Fede-src-info}
+  \end{minipage}
+\end{figure}
+
+\subsubsection{Discusión}
+
+En este último experimento, nos encontramos con una red más chica que los otras. Esto era esperable, debido a que es una red hogareña. En el grafo podemos observar un nodo (192.168.1.1) el cual se conecta con todos los demás. Esta red la conocemos, y sabemos que dicho nodo es el router.
+
+Como podemos observar en la Figura \ref{fig:Fede-src-info}, el router es un nodo distinguido en la fuente $S_{src}$. Sin embargo, en la Figura \ref{fig:Fede-dst-info} (fuente $S_{dst}$) el único nodo distinguido es 192.168.1.5. En el caso de 192.168.1.5, es una computadora que estaba bajando un archivo .torrent, y creemos que por eso 12 paquetes ARP \emph{who-has} tienen destino 192.168.1.5.
+
 \subsection{Red Alto Palermo}
 
 \subsubsection{Descripción y topología de los paquetes}
 
-lugar, dia de la semana, hora aproximada, fecha, wifi o ethernet
-cantidad de paquetes tomados, tiempo de muestreo
-
 Nuestro primer experimento consistió en medir la LAN Wi-Fi pública del shopping Alto Palermo. Esta medición se llevó a cabo el Sábado 20 de Septiembre a las 21hs, el tiempo de medición fue de aproximádamente 40 minutos y se capturaron 1569 paquetes ARP.
+
+Sin embargo, para graficar decidimos usar sólo los primeros 80 paquetes capturados, ya que los graficos con una cantidad tan grande de paquetes eran poco legibles.
 
 A continuación mostramos un grafo que muestra los nodos de la red con su dirección IP y la cantidad de mensajes de tipo \emph{who-has}.
 
 \begin{figure}[H]
  \begin{center}
-  \includegraphics[width=\linewidth/2]{../imgs/snifAlto-ips_red.png}
+  \includegraphics[width=\linewidth]{../imgs/snifAlto-ips_red.png}
   \caption{Grafo Medición Alto Palermo}
  \end{center}
 
 \end{figure}
 
-Como podemos ver en el grafo, la red tiene un nodo distinguido. Este nodo, el cual tiene la dirección IP 117.17.12.1, recibe muchos mensajes de la mayoría de los otros nodos de la red, pero no envía ninguno. Suponemos que este nodo es el router de la red.
+Como podemos ver en el grafo, la red tiene dos nodos que se destacan. Uno de estos nodos, el cual tiene la dirección IP 117.17.12.1, recibe muchos paquetes de la mayoría de los otros nodos de la red, pero no envía ninguno. Y el otro recibe varios paquetes y también envía varios. Suponemos que estos nodos son los router de la red.
 
 \subsubsection{Fuente: $S_{dst}$}
 
@@ -322,52 +375,6 @@ cualquier cosa interesante sobre este caso en particular
 \subsubsection{Descripción y topología de los paquetes}
 
 Para nuestro último experimento, capturamos el tráfico de la LAN de un integrante de nuestro grupo. Medimos el Miércoles 17 de Septiembre a las 00:00 utilizando la red Wi-Fi. El tiempo de medición fue de aproximadamente 40 minutos, y capturamos aproximadamente 20 paquetes.
-
-\begin{figure}[H]
-  \begin{center}
-    \includegraphics[width=\linewidth/2]{../imgs/pruebaFede-ips_red.png}
-    \label{fig:FedeGrafo}
-    \caption{Grafo de LAN hogareña}
-  \end{center}
-\end{figure}
-
-\subsubsection{Fuente: $S_{dst}$}
-
-$\bullet$ Entropía de la fuente: 1.49046857073
-
-\begin{figure}[H]
-  \begin{minipage}{0.5\linewidth}
-    \includegraphics[width=\linewidth]{../imgs/pruebaFede-ips_s_dst_hist.png}
-    \caption{Histograma de $S_{dst}$}\label{fig:Fede-dst-hist}
-  \end{minipage}
-\hfill
-  \begin{minipage}{0.5\linewidth}
-    \includegraphics[width=\linewidth]{../imgs/pruebaFede-ips_s_dst_info.png}
-    \caption{Informacion de $S_{dst}$}\label{fig:Fede-dst-info}
-  \end{minipage}
-\end{figure}
-
-\subsubsection{Fuente: $S_{src}$}
-
-$\bullet$ Entropía de la fuente: 1.19176014818
-
-\begin{figure}[H]
-  \begin{minipage}{0.5\linewidth}
-    \includegraphics[width=\linewidth]{../imgs/pruebaFede-ips_s_src_hist.png}
-    \caption{Histograma de $S_{src}$}\label{fig:Fede-src-hist}
-  \end{minipage}
-\hfill
-  \begin{minipage}{0.5\linewidth}
-    \includegraphics[width=\linewidth]{../imgs/pruebaFede-ips_s_src_info.png}
-    \caption{Informacion de $S_{src}$}\label{fig:Fede-src-info}
-  \end{minipage}
-\end{figure}
-
-\subsubsection{Discusión}
-
-En este último experimento, nos encontramos con una red más chica que los otras. Esto era esperable, debido a que es una red hogareña. En el grafo podemos observar un nodo (192.168.1.1) el cual se conecta con todos los demás. Esta red la conocemos, y sabemos que dicho nodo es el router.
-
-Como podemos observar en la Figura \ref{fig:Fede-src-info}, el router es un nodo distinguido en la fuente $S_{src}$. Sin embargo, en la Figura \ref{fig:Fede-dst-info} (fuente $S_{dst}$) el único nodo distinguido es 192.168.1.5. En el caso de 192.168.1.5, es una computadora que estaba bajando un archivo .torrent, y creemos que por eso 12 paquetes ARP \emph{who-has} tienen destino 192.168.1.5.
 
 \section{Discusión general}
 
