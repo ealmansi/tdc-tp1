@@ -3,28 +3,42 @@
 import sys;
 import time;
 import math;
+import os;
+import re;
+import argparse;
 import matplotlib.pyplot as plt;
-#import pydot;
+import pydot;
 
 def main():
-  s_src, s_dst = read_data()
+  args = parse_args()
+  s_src, s_dst = read_data(args)
+  basename = os.path.basename(args.get('datafile')).split('.')[0]
   hist, info, entropy = compute_source_indicators(s_src)
   print_indicators('s_src', hist, info, entropy)
-  plot_histogram('s_src', hist)
-  plot_info('src_info', info, entropy)
+  plot_histogram('s_src', hist, basename)
+  plot_info('s_src', info, entropy, basename)
   hist, info, entropy = compute_source_indicators(s_dst)
   print_indicators('s_dst', hist, info, entropy)
-  plot_histogram('s_dst', hist)
-  plot_info('dst_info', info, entropy)
-  #plot_network(s_src, s_dst)
+  plot_histogram('s_dst', hist, basename)
+  plot_info('s_dst', info, entropy, basename)
+  plot_network(s_src, s_dst, basename)
 
-def read_data():
+def parse_args():
+  parser = argparse.ArgumentParser(description='ARP packet analysis.')
+  parser.add_argument('datafile', type=str,
+    help = 'data file path')
+  args = vars(parser.parse_args())
+  return args
+
+def read_data(args):
   s_src, s_dst = [], []
-  for line in sys.stdin:
-    pieces = line.split(",")
-    ip_src, ip_dst = pieces[0].strip(), pieces[1].strip()
-    s_src.append(ip_src)
-    s_dst.append(ip_dst)
+  with open(args.get('datafile')) as f:
+    for line in f:
+      if not re.match('^\s*#', line):
+        pieces = line.split(",")
+        ip_src, ip_dst = pieces[0].strip(), pieces[1].strip()
+        s_src.append(ip_src)
+        s_dst.append(ip_dst)
   return s_src, s_dst
 
 def compute_source_indicators(source):
@@ -40,35 +54,34 @@ def print_indicators(source, hist, info, entropy):
   print "  - entropy: ", entropy
   print ""
 
-def plot_histogram(source, hist):
+def plot_histogram(source, hist, basename):
   if len(hist) > 10:
     hist = { k:v for (k,v) in hist.iteritems() if 2 < v }
   x, y = [4 * i for i in range(len(hist))], hist.values()
   labels = hist.keys()
-  f = plt.figure(source, [12, 6])
+  f = plt.figure('hist_{source}'.format(source=source), [12, 12])
   plt.xlim([-2, x[-1] + 2])
   plt.bar(x, y, align='center')
   plt.xticks(x, labels, size='small', rotation='vertical')
-  plt.title(source)
+  plt.title('Histograma: {source}'.format(source=source))
   plt.xlabel("IP")
   plt.ylabel("Cantidad de paquetes")
-  f.savefig('imgs/{source}.png'.format(source=source))
+  f.savefig('imgs/{basename}_{source}_hist.png'.format(basename=basename, source=source))
 
-def plot_info(source, hist, entropy):
+def plot_info(source, hist, entropy, basename):
   x, y = [4 * i for i in range(len(hist))], hist.values()
   labels = hist.keys()
-  f = plt.figure(source, [12, 6])
+  f = plt.figure('info_{source}'.format(source=source), [12, 12])
   plt.xlim([-2, x[-1] + 2])
   plt.bar(x, y, align='center')
   plt.axhline(entropy, color='r',label='entropia')
   plt.xticks(x, labels, size='small',rotation='vertical')
-  plt.title(source)
+  plt.title('Informacion: {source}'.format(source=source))
   plt.xlabel("IP")
   plt.ylabel("Informacion")
-  f.savefig('imgs/{source}.png'.format(source=source))
+  f.savefig('imgs/{basename}_{source}_info.png'.format(basename=basename, source=source))
 
-
-def plot_network(s_src, s_dst):
+def plot_network(s_src, s_dst, basename):
   graph = pydot.Dot(graph_type='digraph')
   nodes = {}
   for ip in set(s_src + s_dst):
@@ -84,7 +97,7 @@ def plot_network(s_src, s_dst):
     if not(len(nodes) > 10) or edges[(src_ip, dst_ip)] > 2:
       graph.add_edge(pydot.Edge(nodes[src_ip], nodes[dst_ip],
         label=edges[(src_ip, dst_ip)], fontsize="8.0", color="blue"))
-  graph.write_png('imgs/red.png')
+  graph.write_png('imgs/{basename}_red.png'.format(basename=basename))
 
 def compute_histogram(ips):
   hist = {}
