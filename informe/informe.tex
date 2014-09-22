@@ -216,12 +216,10 @@ cualquier cosa interesante sobre este caso en particular
 
 \subsection{Red hogareña}
 
-\subsubsection{Descripción y topología de la red}
+\subsubsection{Descripción}
+Para nuestro último experimento, capturamos el tráfico de la LAN de un integrante de nuestro grupo. Medimos el Miércoles 17 de Septiembre a las 00:00 utilizando la red Wi-Fi. El tiempo de medición fue de aproximadamente 40 minutos, y capturamos aproximadamente 20 paquetes.
 
-lugar, dia de la semana, hora aproximada, fecha, wifi o ethernet
-cantidad de paquetes tomados, tiempo de muestreo
-
-Capturamos el tráfico de la LAN de un integrante de nuestro grupo. A continuación presentamos un grafo que muestra el pasaje de paquetes ARP entre las distintas IPs.
+\subsubsection{Topología de la red}
 
 \begin{figure}[H]
   \begin{center}
@@ -231,33 +229,37 @@ Capturamos el tráfico de la LAN de un integrante de nuestro grupo. A continuaci
   \end{center}
 \end{figure}
 
-
- % \begin{figure}[H]
- %   \begin{minipage}{0.5\linewidth}
- %     \includegraphics[width=\linewidth]{graficos/goloso_tiempo.eps}
- %     \caption{Tiempo ejecución goloso}\label{fig:goloso-tiempo}
- %   \end{minipage}
- %  \hfill
- %   \begin{minipage}{0.5\linewidth}
- %     \includegraphics[width=\linewidth]{graficos/goloso_tiempo_div_n.eps}
- %     \caption{Tiempo de goloso dividido n}\label{fig:goloso-tiempo-n}
- %   \end{minipage}
- % \end{figure}
-
-
-grafico del grafo de la red
-
 \subsubsection{Fuente: $S_{dst}$}
 
-histograma
-grafico de informacion
-entropía total
+$\bullet$ Entropía de la fuente: 1.49046857073
+
+\begin{figure}[H]
+  \begin{minipage}{0.5\linewidth}
+    \includegraphics[width=\linewidth]{../imgs/pruebaFede-ips_s_dst_hist.png}
+    \caption{Histograma de $S_{dst}$}\label{fig:Fede-dst-hist}
+  \end{minipage}
+\hfill
+  \begin{minipage}{0.5\linewidth}
+    \includegraphics[width=\linewidth]{../imgs/pruebaFede-ips_s_dst_info.png}
+    \caption{Informacion de $S_{dst}$}\label{fig:Fede-dst-info}
+  \end{minipage}
+\end{figure}
 
 \subsubsection{Fuente: $S_{src}$}
 
-histograma
-grafico de informacion
-entropía total
+$\bullet$ Entropía de la fuente: 1.19176014818
+
+\begin{figure}[H]
+  \begin{minipage}{0.5\linewidth}
+    \includegraphics[width=\linewidth]{../imgs/pruebaFede-ips_s_src_hist.png}
+    \caption{Histograma de $S_{src}$}\label{fig:Fede-src-hist}
+  \end{minipage}
+\hfill
+  \begin{minipage}{0.5\linewidth}
+    \includegraphics[width=\linewidth]{../imgs/pruebaFede-ips_s_src_info.png}
+    \caption{Informacion de $S_{src}$}\label{fig:Fede-src-info}
+  \end{minipage}
+\end{figure}
 
 \subsubsection{Discusión}
 
