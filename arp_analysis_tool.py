@@ -99,7 +99,7 @@ def plot_network(s_src, s_dst, basename):
     edges[(s_src[i], s_dst[i])] += 1
   for (src_ip, dst_ip) in edges:
     graph.add_edge(pydot.Edge(nodes[src_ip], nodes[dst_ip],
-      label=edges[(src_ip, dst_ip)], fontsize="8.0", color="blue", len=2.0))
+      label=edges[(src_ip, dst_ip)], fontsize="8.0", color="blue", len=3.0))
   graph.write_png('imgs/{basename}_red.png'.format(basename=basename), prog='neato')
 
 def compute_histogram(ips):

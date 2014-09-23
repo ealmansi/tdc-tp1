@@ -24,9 +24,9 @@ En el gráfico de la figura \ref{fig:entrepiso-dc-grafo} se presenta el grafo di
     \caption{Informacion de $S_{dst}$}\label{fig:entrepiso-dc-dst-info}
 \end{figure}
 
-$\bullet$ Entropía de la fuente: 6.95922916897
+$\bullet$ Entropía de la fuente: 6.95 sobre un máximo posible de 7.58
 
-En las figuras \ref{fig:entrepiso-dc-dst-hist} y \ref{fig:entrepiso-dc-dst-info} se presentan los gráficos tipo histograma e información para la fuente $S_{dst}$. En este caso, hay múltiples nodos con una frecuencia mucho mayor que la media, siendo distinguidos alrededor de 10 nodos según el criterio de la sección \ref{subsec:modelos-fuente-informacion}; en particular, aquel de menor información \emph{10.1.200.197}.
+En las figuras \ref{fig:entrepiso-dc-dst-hist} y \ref{fig:entrepiso-dc-dst-info} se presentan los gráficos tipo histograma e información para la fuente $S_{dst}$. En este caso, hay múltiples nodos con una frecuencia mucho mayor que la media, siendo distinguidos aproximadamente 10 nodos según el criterio de la sección \ref{subsec:modelos-fuente-informacion}.
 
 \subsubsection{Fuente: $S_{src}$}
 
@@ -40,8 +40,11 @@ En las figuras \ref{fig:entrepiso-dc-dst-hist} y \ref{fig:entrepiso-dc-dst-info}
     \caption{Informacion de $S_{src}$}\label{fig:entrepiso-dc-src-info}
 \end{figure}
 
-$\bullet$ Entropía de la fuente: 2.03731420117
+$\bullet$ Entropía de la fuente: 2.03 sobre un máximo posible de 5.00
+
+En las figuras \ref{fig:entrepiso-dc-src-hist} y \ref{fig:entrepiso-dc-src-info} se presentan los gráficos tipo histograma e información para la fuente $S_{src}$. A diferencia de la fuente $S_{dst}$, en este caso hay un único nodo distinguido, el de IP \emph{10.1.200.197}.
 
 \subsubsection{Discusión}
 
-cualquier cosa interesante sobre este caso en particular
+En el caso de esta red, la entropía de la fuente $S_{dst}$ es mucho más alta en términos relativos (92\% de la máxima posible) que la de la fuente $S_{src}$ (41\%). Esto es previsible dados los gráficos de información, dado que $S_{src}$ tiene una estructura más jerarquizada respecto al nodo distinguido; complementándose con lo que se observa en el gráfico del grafo.
+Enfocando el análisis el cluster que algomera la mayor cantidad de nodos, la IP \emph{10.1.200.197} es la que envía y recibe mayor cantidad de paquetes, y por lo tanto pareciera tratarse del gateway.
