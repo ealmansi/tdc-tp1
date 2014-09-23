@@ -1,3 +1,26 @@
 En este trabajo práctico abordamos el desarrollo de herramientas de diagnóstico de red, con el objetivo principal de analizar el protocolo ARP (Address Resolution Protocol). Este provee un método para asociar los identificadores de capa enlace y de capa de red de los dispositivos conectados a una red local; por ejemplo, vincular direcciones MAC (capa enlace) con direcciones IPv4 (capa de red).
 
-Por otro lado, vamos a sacar conclusiones acerca de los tipos de dispositivos de red que se pueden encontrar en un segumento de red determinado. Para ello, utilizamos la herramienta de manipulación y análisis de paquetes, Scapy.
+Las herramientas desarrolladas\footnote{\emph{arp\_listener\_tool.py}, \emph{arp\_analysis\_tool.py}} permiten capturar pasivamente los paquetes ARP enviados en una red local, y posteriormente analizar los datos obtenidos. Las mismas fueron escritas en \emph{Python}, utilizando el software para manipulación y análisis de paquetes \emph{Scapy}\footnote{http://www.secdev.org/projects/scapy/}.
+
+Para analizar las redes locales estudiadas, utilizamos dos modelos de fuente de información:
+\vspace*{-2mm}
+
+\begin{itemize}
+  \item $S_{dst}$ = \{$s_1$ $\cdots$ $s_n$\}, siendo $s_i$ una IP que aparece como dirección destino en los paquetes ARP \emph{who-has}.
+  \item $S_{src}$ = \{$s_1$ $\cdots$ $s_n$\}, siendo $s_i$ una IP que aparece como dirección origen en los paquetes ARP \emph{who-has}.
+\end{itemize}
+
+Esto permite, dado el flujo de paquetes de una red local, definir la información del evento $E_i$: aparición del símbolo $s_i$ como:
+
+\begin{center}
+$I (E_i) = log(\frac{1}{P(E_i)})$ 
+\end{center}
+
+unidades de información, donde $P(E_i)$ es la probabilidad de que suceda $E_i$. Al usar $log_2$, la unidad obtenida se denomina bits.
+
+$\bullet$ \textbf{Entropía}: La entropía de un mensaje X, que se representa por H(X), es el valor medio ponderado de la cantidad de información de los diversos estados del mensaje 
+
+\begin{center}
+$H(X) = - \Sigma$ $p(x)$ $log$ $p(x)$
+\end{center}
+
