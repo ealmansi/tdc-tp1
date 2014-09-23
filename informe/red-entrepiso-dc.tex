@@ -1,8 +1,8 @@
 \subsubsection{Descripción y grafo de relación entre los nodos}
 
-Realizamos una captura en la red Wi-Fi \emph{Entrepiso-DC}, disponible desde los laboratorios del Depto. de Computación. La muestra fue tomada un lunes a las 17hs aproximadamente -horario típicamente de alto tráfico-, logrando un total de XX paquetes en MM minutos.
+Realizamos una captura en la red Wi-Fi \emph{Entrepiso-DC}, disponible desde los laboratorios del Depto. de Computación. La muestra fue tomada un lunes a las 17hs aproximadamente -horario típicamente de alto tráfico-, logrando un total de 450 paquetes en 11 minutos.
 
-En el gráfico de la figura \ref{fig:entrepiso-dc-grafo} se presenta el grafo dirigido representando la red. En el mismo se observa una gran cantidad de nodos ligada al nodo con IP 10.1.200.197, y luego múltiples conjuntos pequeños de nodos conectados entre sí pero disconexos de la estructura mayoritaria.
+En el gráfico de la figura \ref{fig:entrepiso-dc-grafo} se presenta el grafo dirigido representando la red. En el mismo se observa una gran cantidad de nodos ligada al nodo con IP \emph{10.1.200.197}, y luego múltiples conjuntos pequeños de nodos conectados entre sí pero disconexos de la estructura mayoritaria. Es decir, a diferencia de las demás redes observadas, esta presentó una gran cantidad de pequeños clusters independientes.
 
 \begin{figure}[H]
   \begin{center}
@@ -25,6 +25,8 @@ En el gráfico de la figura \ref{fig:entrepiso-dc-grafo} se presenta el grafo di
 \end{figure}
 
 $\bullet$ Entropía de la fuente: 6.95922916897
+
+En las figuras \ref{fig:entrepiso-dc-dst-hist} y \ref{fig:entrepiso-dc-dst-info} se presentan los gráficos tipo histograma e información para la fuente $S_{dst}$. En este caso, hay múltiples nodos con una frecuencia mucho mayor que la media, siendo distinguidos alrededor de 10 nodos según el criterio de la sección \ref{subsec:modelos-fuente-informacion}; en particular, aquel de menor información \emph{10.1.200.197}.
 
 \subsubsection{Fuente: $S_{src}$}
 

@@ -3,6 +3,7 @@
 import sys;
 import time;
 import math;
+import collections;
 import os;
 import re;
 import argparse;
@@ -50,14 +51,14 @@ def compute_source_indicators(source):
   
 def print_indicators(source, hist, info, entropy, basename):
   print '{basename}: {source}'.format(basename=basename, source=source)
-  # print "  - hist: ", hist
-  # print "  - info: ", info
+  print "  - hist: ", hist
+  print "  - info: ", info
   print "  - entropy: ", entropy
+  print "  - max possible entropy: ", math.log(len(hist.keys()), 2)
+  print "  - ratio: ", (entropy / math.log(len(hist.keys()), 2))
   print ""
 
 def plot_histogram(source, hist, basename):
-  # if len(hist) > 10:
-  #   hist = { k:v for (k,v) in hist.iteritems() if 2 < v }
   x, y = [20 * i for i in range(len(hist))], hist.values()
   labels = hist.keys()
   f = plt.figure('hist_{source}'.format(source=source), [16, 9])
@@ -70,9 +71,9 @@ def plot_histogram(source, hist, basename):
   plt.ylabel("Cantidad de paquetes", fontsize=18)
   f.savefig('imgs/{basename}_{source}_hist.png'.format(basename=basename, source=source))
 
-def plot_info(source, hist, entropy, basename):
-  x, y = [20 * i for i in range(len(hist))], hist.values()
-  labels = hist.keys()
+def plot_info(source, info, entropy, basename):
+  x, y = [20 * i for i in range(len(info))], info.values()
+  labels = info.keys()
   f = plt.figure('info_{source}'.format(source=source), [16, 9])
   f.subplots_adjust(bottom=0.2)
   plt.xlim([-2, x[-1] + 2])
@@ -102,12 +103,12 @@ def plot_network(s_src, s_dst, basename):
   graph.write_png('imgs/{basename}_red.png'.format(basename=basename), prog='neato')
 
 def compute_histogram(ips):
-  hist = {}
+  hist = collections.OrderedDict()
   for ip in ips: hist[ip] = hist.get(ip, 0) + 1
   return hist
 
 def compute_information(hist, total):
-  info = {}
+  info = collections.OrderedDict()
   for ip in hist: info[ip] = math.log(total, 2) - math.log(hist[ip], 2)
   return info
 
