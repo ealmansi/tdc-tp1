@@ -1,6 +1,6 @@
 \subsubsection{Descripción y grafo de relación entre los nodos}
 
-Para nuestro último experimento, capturamos el tráfico de la LAN de un integrante de nuestro grupo. Medimos el Miércoles 17 de Septiembre a las 00:00 utilizando la red Wi-Fi. El tiempo de medición fue de aproximadamente 40 minutos, y capturamos aproximadamente 20 paquetes.
+En este primer, capturamos el tráfico de la LAN de un integrante de nuestro grupo. Medimos un Miércoles a las 00:00 utilizando la red Wi-Fi. El tiempo de medición fue de aproximadamente 40 minutos, y capturamos aproximadamente 20 paquetes.
 
 \begin{figure}[H]
   \begin{center}
@@ -40,6 +40,6 @@ $\bullet$ Entropía de la fuente: 1.2319817814
 
 \subsubsection{Discusión}
 
-En este último experimento, nos encontramos con una red más chica que los otras. Esto era esperable, debido a que es una red hogareña. En el grafo podemos observar un nodo (192.168.1.1) el cual se conecta con todos los demás. Esta red la conocemos, y sabemos que dicho nodo es el router.
+Debido a que es una red hogareña, tenemos una red bastante chica. En el grafo podemos observar un nodo (\emph{192.168.1.1}) el cual se conecta con todos los demás. A esta red la conocemos, y sabemos que dicho nodo es el router.
 
-Como podemos observar en la Figura \ref{fig:Fede-src-info}, el router es un nodo distinguido en la fuente $S_{src}$. Sin embargo, en la Figura \ref{fig:Fede-dst-info} (fuente $S_{dst}$) el único nodo distinguido es 192.168.1.5. En el caso de 192.168.1.5, es una computadora que estaba bajando un archivo .torrent, y creemos que por eso 12 paquetes ARP \emph{who-has} tienen destino 192.168.1.5.
+Como podemos observar en la Figura \ref{fig:Fede-src-info}, el router es un nodo distinguido en la fuente $S_{src}$. Sin embargo, en la Figura \ref{fig:Fede-dst-info} (fuente $S_{dst}$) el único nodo distinguido es \emph{192.168.1.5}. En el caso de \emph{192.168.1.5}, es una computadora que estaba bajando un archivo .torrent, y creemos que por eso 12 paquetes ARP \emph{who-has} tienen destino \emph{192.168.1.5}.
