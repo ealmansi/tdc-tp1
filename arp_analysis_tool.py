@@ -7,7 +7,7 @@ import os;
 import re;
 import argparse;
 import matplotlib.pyplot as plt;
-#import pydot;
+import pydot;
 
 def main():
   args = parse_args()
@@ -21,7 +21,7 @@ def main():
   print_indicators('s_dst', hist, info, entropy)
   plot_histogram('s_dst', hist, basename)
   plot_info('s_dst', info, entropy, basename)
-  #plot_network(s_src, s_dst, basename)
+  plot_network(s_src, s_dst, basename)
 
 def parse_args():
   parser = argparse.ArgumentParser(description='ARP packet analysis.')

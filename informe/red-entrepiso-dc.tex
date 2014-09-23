@@ -1,0 +1,53 @@
+\subsubsection{Descripción y topología de los paquetes}
+
+Realizamos una captura en la red Wi-Fi \emph{Entrepiso-DC}, disponible desde los laboratorios del Depto. de Computación. La muestra fue tomada un lunes a las 17hs aproximadamente -horario típicamente de alto tráfico-, logrando un total de XX paquetes en MM minutos.
+
+En el gráfico de la figura \ref{fig:entrepiso-dc-grafo} se presenta el grafo dirigido representando la red. En el mismo se observa una gran cantidad de nodos ligada al nodo con IP 10.1.200.197, y luego múltiples conjuntos pequeños de nodos conectados entre sí pero disconexos de la estructura mayoritaria.
+
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=0.8\linewidth]{../imgs/entrepiso-dc-ips_red.png}
+    \caption{Grafo mostrando la topología de la red \emph{Entrepiso-DC}.}
+    \label{fig:entrepiso-dc-grafo}
+  \end{center}
+\end{figure}
+
+\subsubsection{Fuente: $S_{dst}$}
+
+\begin{figure}[H]
+  \begin{minipage}{0.48\linewidth}
+    \includegraphics[width=\linewidth]{../imgs/entrepiso-dc-ips_s_dst_hist.png}
+    \caption{Histograma de la serie de paquetes s\_dst de la red \emph{Entrepiso-DC}.}
+    \label{fig:histograma-entrepiso-dc-s-dst}
+  \end{minipage}
+\hfill
+  \begin{minipage}{0.48\linewidth}
+    \includegraphics[width=\linewidth]{../imgs/entrepiso-dc-ips_s_dst_info.png}
+    \caption{Gráfico de cantidad de información para cada IP s\_dst de la red \emph{Entrepiso-DC}.}
+    \label{fig:informacion-entrepiso-dc-s-dst}
+  \end{minipage}
+\end{figure}
+
+entropía total
+
+\subsubsection{Fuente: $S_{src}$}
+
+\begin{figure}[H]
+  \begin{minipage}{0.48\linewidth}
+    \includegraphics[width=\linewidth]{../imgs/entrepiso-dc-ips_s_src_hist.png}
+    \caption{Histograma de la serie de paquetes s\_src de la red \emph{Entrepiso-DC}.}
+    \label{fig:histograma-entrepiso-dc-s-src}
+  \end{minipage}
+\hfill
+  \begin{minipage}{0.48\linewidth}
+    \includegraphics[width=\linewidth]{../imgs/entrepiso-dc-ips_s_src_info.png}
+    \caption{Gráfico de cantidad de información para cada IP s\_src de la red \emph{Entrepiso-DC}.}
+    \label{fig:informacion-entrepiso-dc-s-src}
+  \end{minipage}
+\end{figure}
+
+entropía total
+
+\subsubsection{Discusión}
+
+cualquier cosa interesante sobre este caso en particular
