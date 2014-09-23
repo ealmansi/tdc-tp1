@@ -14,13 +14,13 @@ def main():
   s_src, s_dst = read_data(args)
   basename = os.path.basename(args.get('datafile')).split('.')[0]
   hist, info, entropy = compute_source_indicators(s_src)
-  print_indicators('s_src', hist, info, entropy)
-  plot_histogram('s_src', hist, basename)
-  plot_info('s_src', info, entropy, basename)
+  print_indicators('S_src', hist, info, entropy, basename)
+  plot_histogram('S_src', hist, basename)
+  plot_info('S_src', info, entropy, basename)
   hist, info, entropy = compute_source_indicators(s_dst)
-  print_indicators('s_dst', hist, info, entropy)
-  plot_histogram('s_dst', hist, basename)
-  plot_info('s_dst', info, entropy, basename)
+  print_indicators('S_dst', hist, info, entropy, basename)
+  plot_histogram('S_dst', hist, basename)
+  plot_info('S_dst', info, entropy, basename)
   plot_network(s_src, s_dst, basename)
 
 def parse_args():
@@ -47,36 +47,38 @@ def compute_source_indicators(source):
   entropy = compute_entropy(hist, info, len(source))
   return hist, info, entropy
   
-def print_indicators(source, hist, info, entropy):
-  print source
-  print "  - hist: ", hist
-  print "  - info: ", info
+def print_indicators(source, hist, info, entropy, basename):
+  print '{basename}: {source}'.format(basename=basename, source=source)
+  # print "  - hist: ", hist
+  # print "  - info: ", info
   print "  - entropy: ", entropy
   print ""
 
 def plot_histogram(source, hist, basename):
-  if len(hist) > 10:
-    hist = { k:v for (k,v) in hist.iteritems() if 2 < v }
-  x, y = [4 * i for i in range(len(hist))], hist.values()
+  # if len(hist) > 10:
+  #   hist = { k:v for (k,v) in hist.iteritems() if 2 < v }
+  x, y = [20 * i for i in range(len(hist))], hist.values()
   labels = hist.keys()
-  f = plt.figure('hist_{source}'.format(source=source), [8, 8])
+  f = plt.figure('hist_{source}'.format(source=source), [16, 9])
+  f.subplots_adjust(bottom=0.15)
   plt.xlim([-2, x[-1] + 2])
   plt.bar(x, y, align='center')
   plt.xticks(x, labels, size='small', rotation='vertical', fontsize=18)
-  plt.title('Histograma: {source}'.format(source=source), fontsize=18)
+  plt.title('Cant. paquetes vs IP: {source}'.format(source=source), fontsize=18)
   # plt.xlabel("IP", fontsize=15)
   plt.ylabel("Cantidad de paquetes", fontsize=18)
   f.savefig('imgs/{basename}_{source}_hist.png'.format(basename=basename, source=source))
 
 def plot_info(source, hist, entropy, basename):
-  x, y = [4 * i for i in range(len(hist))], hist.values()
+  x, y = [20 * i for i in range(len(hist))], hist.values()
   labels = hist.keys()
-  f = plt.figure('info_{source}'.format(source=source), [8, 8])
+  f = plt.figure('info_{source}'.format(source=source), [16, 9])
+  f.subplots_adjust(bottom=0.15)
   plt.xlim([-2, x[-1] + 2])
   plt.bar(x, y, align='center', color="green")
   plt.axhline(entropy, color='r',label='entropia')
   plt.xticks(x, labels, size='small',rotation='vertical', fontsize=18)
-  plt.title('Informacion: {source}'.format(source=source), fontsize=18)
+  plt.title('Informacion vs IP: {source}'.format(source=source), fontsize=18)
   # plt.xlabel("IP", fontsize=15)
   plt.ylabel("Informacion", fontsize=18)
   f.savefig('imgs/{basename}_{source}_info.png'.format(basename=basename, source=source))
@@ -95,8 +97,8 @@ def plot_network(s_src, s_dst, basename):
     edges[(s_src[i], s_dst[i])] += 1
   for (src_ip, dst_ip) in edges:
     graph.add_edge(pydot.Edge(nodes[src_ip], nodes[dst_ip],
-      label=edges[(src_ip, dst_ip)], fontsize="8.0", color="blue"))
-  graph.write_png('imgs/{basename}_red.png'.format(basename=basename))
+      label=edges[(src_ip, dst_ip)], fontsize="8.0", color="blue", len=2.0))
+  graph.write_png('imgs/{basename}_red.png'.format(basename=basename), prog='neato')
 
 def compute_histogram(ips):
   hist = {}
