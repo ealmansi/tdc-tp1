@@ -24,9 +24,10 @@ def main():
   plot_network(s_src, s_dst, basename)
 
 def parse_args():
-  parser = argparse.ArgumentParser(description='ARP packet analysis.')
+  parser = argparse.ArgumentParser(description='ARP packet analysis.',
+    epilog='Example usage: {script} data/datafile.txt'.format(script=__file__))
   parser.add_argument('datafile', type=str,
-    help = 'data file path')
+    help = 'data file path (lines in data file must be of the form IP_SRC , IP_DST). For example: 192.168.4.139 , 192.168.4.1')
   args = vars(parser.parse_args())
   return args
 

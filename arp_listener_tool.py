@@ -21,7 +21,8 @@ def check_privileges():
 
 def parse_args():
   global args
-  parser = argparse.ArgumentParser(description='ARP packet listener.')
+  parser = argparse.ArgumentParser(description='ARP packet listener.',
+    epilog='Example usage: {script} --only-who-has --only-ips --count 100'.format(script=__file__))
   parser.add_argument('--only-who-has', action='store_true',
     help = 'listen only to who-has ARP packets.')
   parser.add_argument('--only-ips', action='store_true',
