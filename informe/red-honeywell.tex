@@ -1,15 +1,10 @@
 \subsubsection{Descripción y topología de los paquetes}
 
-lugar, dia de la semana, hora aproximada, fecha, wifi o ethernet
-cantidad de paquetes tomados, tiempo de muestreo
-
 Nuestro segundo experimento consistió en capturar los paquetes de la LAN Wi-Fi de la empresa Honeywell. En esta red no hay mucho tráfico, ya que la mayoría de las computadores se conectan via Ethernet a una VPN. Esta red es dedicada a transacciones que no necesiten un nivel de seguridad. La captura se realizo un día lunes a las 11 am. durante media hora, lográndose capturar 253 paquetes.  
-
-grafico del grafo de la red
 
 \begin{figure}[H]
  \begin{center}
-  \includegraphics[width=\linewidth]{../imgs/red-honeywell_red.png}
+  \includegraphics[width=0.7\linewidth]{../imgs/red-honeywell_red.png}
   \caption{Medición Honeywell}
  \end{center}
 \end{figure}
@@ -17,39 +12,31 @@ grafico del grafo de la red
 
 \subsubsection{Fuente: $S_{dst}$}
 
-\begin{figure}[H]
-   \begin{minipage}{0.5\linewidth}
-     \includegraphics[width=\linewidth]{../imgs/red-honeywell_S_dst_hist.png}
-     \caption{Medición Honeywell}\label{fig:Honeywell-dst-hist}
-   \end{minipage}
-  \hfill
-   \begin{minipage}{0.5\linewidth}
-     \includegraphics[width=\linewidth]{../imgs/red-honeywell_S_dst_info.png}
-     \caption{Medición Honeywell}\label{fig:Honeywell-dst-info}
-   \end{minipage}
- \end{figure}
+\begin{figure}[H]\centering
+    \includegraphics[width=0.8\linewidth]{../imgs/red-honeywell_S_dst_hist.png}
+    \caption{Histograma de $S_{dst}$}\label{fig:Honeywell-dst-hist}
+\end{figure}
 
-histograma
-grafico de informacion
-entropía total
+\begin{figure}[H]\centering
+    \includegraphics[width=0.8\linewidth]{../imgs/red-honeywell_S_dst_info.png}
+    \caption{Informacion de $S_{dst}$}\label{fig:Honeywell-dst-info}
+\end{figure}
+
+$\bullet$ Entropía de la fuente: 3.17600221734
 
 \subsubsection{Fuente: $S_{src}$}
 
-histograma
-grafico de informacion
-entropía total
+\begin{figure}[H]\centering
+    \includegraphics[width=0.8\linewidth]{../imgs/red-honeywell_S_src_hist.png}
+    \caption{Histograma de $S_{src}$}\label{fig:Honeywell-src-hist}
+\end{figure}
 
-\begin{figure}[H]
-   \begin{minipage}{0.5\linewidth}
-     \includegraphics[width=\linewidth]{../imgs/red-honeywell_S_src_hist.png}
-     \caption{Medición Honeywell}\label{fig:Honeywell-src-hist}
-   \end{minipage}
-  \hfill
-   \begin{minipage}{0.5\linewidth}
-     \includegraphics[width=\linewidth]{../imgs/red-honeywell_S_src_info.png}
-     \caption{Medición Honeywell}\label{fig:Honeywell-src-  info}
-   \end{minipage}
- \end{figure}
+\begin{figure}[H]\centering
+    \includegraphics[width=0.8\linewidth]{../imgs/red-honeywell_S_src_info.png}
+    \caption{Informacion de $S_{src}$}\label{fig:Honeywell-src-info}
+\end{figure}
+
+$\bullet$ Entropía de la fuente: 2.05322002017
 
 \subsubsection{Discusión}
 

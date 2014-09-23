@@ -8,7 +8,7 @@ A continuación mostramos un grafo que muestra los nodos de la red con su direcc
 
 \begin{figure}[H]
  \begin{center}
-  \includegraphics[width=\linewidth]{../imgs/red-alto-palermo_red.png}
+  \includegraphics[width=0.9\linewidth]{../imgs/red-alto-palermo_red.png}
   \caption{Grafo Medición Alto Palermo}
  \end{center}
 
@@ -20,17 +20,17 @@ Como podemos ver en el grafo, la red tiene dos nodos que se destacan. Uno de est
 
 A continuación incluimos dos gráficos. Uno de éstos es un histograma que muestra cuántas veces apareció cada símbolo en la fuente. El otro, muestra la cantidad de información de cada símbolo de la fuente $S_{dst}$ en comparación con la entropía de la misma. 
 
-\begin{figure}[H]
-   \begin{minipage}{0.5\linewidth}
-     \includegraphics[width=\linewidth]{../imgs/red-alto-palermo_S_dst_hist.png}
-     \caption{Medición Alto Palermo}\label{fig:Alto-dst-hist}
-   \end{minipage}
-  \hfill
-   \begin{minipage}{0.5\linewidth}
-     \includegraphics[width=\linewidth]{../imgs/red-alto-palermo_S_dst_info.png}
-     \caption{Medición Información Alto Palermo}\label{fig:Alto-dst-info}
-   \end{minipage}
- \end{figure}
+\begin{figure}[H]\centering
+    \includegraphics[width=0.8\linewidth]{../imgs/red-alto-palermo_S_dst_hist.png}
+    \caption{Histograma de $S_{dst}$}\label{fig:Alto-dst-hist}
+\end{figure}
+
+\begin{figure}[H]\centering
+    \includegraphics[width=0.8\linewidth]{../imgs/red-alto-palermo_S_dst_info.png}
+    \caption{Informacion de $S_{dst}$}\label{fig:Alto-dst-info}
+\end{figure}
+
+$\bullet$ Entropía de la fuente: 4.65701881033
 
 Como podemos observar en el primer gráfico, la dirección IP 177.17.12.1 aparece muchas más veces que el resto de las IP. Esto es así porque dicha dirección recibe mensajes de casi todos los demás nodos de la red.
 
@@ -41,17 +41,17 @@ En el segundo gráfico podemos ver que la cantidad de información que aporta la
 
 A contincuación mostramos gráficos similares, pero esta vez para la fuente $S_{src}$:
 
-\begin{figure}[H]
-   \begin{minipage}{0.5\linewidth}
-     \includegraphics[width=\linewidth]{../imgs/red-alto-palermo_S_src_hist.png}
-     \caption{Medición Honeywell}\label{fig:Alto-src-hist}
-   \end{minipage}
-  \hfill
-   \begin{minipage}{0.5\linewidth}
-     \includegraphics[width=\linewidth]{../imgs/red-alto-palermo_S_src_info.png}
-     \caption{Medición Honeywell}\label{fig:Alto-src-info}
-   \end{minipage}
- \end{figure}
+\begin{figure}[H]\centering
+    \includegraphics[width=0.8\linewidth]{../imgs/red-alto-palermo_S_src_hist.png}
+    \caption{Histograma de $S_{src}$}\label{fig:Alto-src-hist}
+\end{figure}
+
+\begin{figure}[H]\centering
+    \includegraphics[width=0.8\linewidth]{../imgs/red-alto-palermo_S_src_info.png}
+    \caption{Informacion de $S_{src}$}\label{fig:Alto-src-info}
+\end{figure}
+
+$\bullet$ Entropía de la fuente: 4.96088403083
 
 En estos gráficos podemos observar que hay un nodo que envía muchos más paquetes que el resto de los nodos. Dicho nodo tiene la dirección IP 172.17.12.2. En el segundo gráfico podemos observar que la cantidad de información del símbolo 172.17.12.2 en la fuente $S_{src}$ es menor que su entropía.
 
