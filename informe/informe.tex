@@ -211,7 +211,7 @@ A continuación mostramos un grafo que muestra los nodos de la red con su direcc
 
 \end{figure}
 
-Como podemos ver en el grafo, la red tiene dos nodos que se destacan. Uno de estos nodos, el cual tiene la dirección IP 117.17.12.1, recibe muchos paquetes de la mayoría de los otros nodos de la red, pero no envía ninguno. Y el otro recibe varios paquetes y también envía varios. Suponemos que estos nodos son los router de la red.
+Como podemos ver en el grafo, la red tiene dos nodos que se destacan. Uno de estos nodos, el cual tiene la dirección IP 117.17.12.1, recibe muchos paquetes de la mayoría de los otros nodos de la red, pero no envía ninguno. Y el otro recibe varios paquetes y también envía varios.
 
 \subsubsection{Fuente: $S_{dst}$}
 
@@ -229,9 +229,9 @@ A continuación incluimos dos gráficos. Uno de éstos es un histograma que mues
    \end{minipage}
  \end{figure}
 
-Como podemos observar en el primer gráfico, la dirección IP= 177.17.12.1 aparece muchas mas veces que el resto de las IP. Esto es así porque, como vimos en el grafo de la sección anterior, dicha dirección recibe mensajes de casi todos los demás nodos de la red.
+Como podemos observar en el primer gráfico, la dirección IP 177.17.12.1 aparece muchas más veces que el resto de las IP. Esto es así porque dicha dirección recibe mensajes de casi todos los demás nodos de la red.
 
-En el segundo gráfico podemos ver que la cantidad de información que aporta la dirección IP=177.17.12.1 es más baja que la entopía de la fuente. Concluimos entonces que el nodo de la red que tiene la dirección IP=177.17.12.1 se trata de un nodo distinguido.
+En el segundo gráfico podemos ver que la cantidad de información que aporta la dirección IP 177.17.12.1 es más baja que la entopía de la fuente.
  
  
 \subsubsection{Fuente: $S_{src}$}
@@ -256,6 +256,13 @@ Además podemos ver que hay otro nodo distinguido en esta fuente, el nodo que ti
  
 \subsubsection{Discusión}
 
+Cuando observamos el grafo en la primera parte del análisis de esta red, dijimos que había dos nodos que se destacaban visualmente, los cuales eran los que tenían las direcciones IP 177.17.12.1 y 177.17.12.2. Al ver el grafo notamos que la mayor parte de los paquetes capturados eran enviados o recibidos por alguno de estos dos nodos. Esto nos hizo suponer que éstos eran los dos nodos distinguidos de la red.
+
+Al luego observamos el histograma y el gráfico de barras de la fuente $S_{dst}$. De esta forma vimos que efectivamente el nodo con la IP 117.17.12.1 aparecía como dirección destino en muchos mensajes. Sin embargo el nodo 177.17.12.2 no aparecía tantaas veces.
+
+Luego de hacer lo mismo con la fuente $S_{src}$ notamos que el nodo que aparecía más veces era el nodo 177.17.12.2. El nodo 177.17.12.1 no era un símbolo de $S_{src}$ ya que éste no mando mensajes, por lo tanto no aparece en estos gráficos.
+
+Concluimos entonces que el nodo de la red que tiene la dirección IP 177.17.12.1 se trata de un nodo distinguido, el cual creemos que es el router de la red. Sin embargo, no pudimos ver qué rol ocupaba el nodo 177.17.12.2 en la misma.
 
 \subsection{Red Honeywell}
 
