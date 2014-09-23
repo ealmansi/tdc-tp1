@@ -1,62 +1,28 @@
-Antes de comenzar el desarrollo vamos a definir algunos términos.
+\subsection{Modelos de fuente de información}
 
-$\bullet$ \textbf{Nodo distinguido}: En una fuente, un nodo distinguido es un nodo cuya información es menor a la entropía de dicha fuente.
+Para analizar las redes locales estudiadas, utilizamos dos modelos de fuente de información:
+\vspace*{-2mm}
 
-\subsection{Capturando tráfico}
-Para el desarrollo de este trabajo práctico escuchamos pasivamente redes para poder observar que sucedía en las mismas. En particular, capturamos paquetes ARP \emph{who-has}.
+\begin{itemize}
+  \item $S_{dst}$ = \{$s_1$ $\cdots$ $s_n$\}, siendo $s_i$ una IP que aparece como dirección destino en los paquetes ARP \emph{who-has}.
+  \item $S_{src}$ = \{$s_1$ $\cdots$ $s_n$\}, siendo $s_i$ una IP que aparece como dirección origen en los paquetes ARP \emph{who-has}.
+\end{itemize}
 
-Utilizamos dos modelos de fuente de información:
+Esto permitió, dado el flujo de paquetes de una red local, definir la \textbf{información} del evento $E_i$: ``aparición del símbolo $s_i$'' como:
 
-$S_{dst}$ = \{$s_1$ $\cdots$ $s_n$\} siendo $s_i$ una IP que aparece como dirección destino en los paquetes ARP \emph{who-has}
+$$I (E_i) = log\left(\frac{1}{P(E_i)}\right)$$
 
-$S_{src}$ = \{$s_1$ $\cdots$ $s_n$\} siendo $s_i$ una IP que aparece como dirección origen en los paquetes ARP \emph{who-has}
+unidades de información, donde $P(E_i)$ es la probabilidad de que suceda $E_i$. Al usar $log_2$, la unidad obtenida se denomina bits.
 
-Creamos una \emph{tool} que escucha pasivamente en la red local. Luego, la adaptamos para que estime las probabilidades de dichas fuentes en función de los paquetes ARP observados y que calcule la entropía de las mismas.
+Utilizando la definición previa se puede definir la \textbf{entropía} de una fuente ($S_{dst}$ o $S_{src}$), representada por $H(S)$, como el valor medio ponderado de la cantidad de información de la aparición de cada símbolo $s_i$ que la compone.
 
-Usando dicha herramienta, realizamos capturas de paquetes ARP sobre distintas LANs: Alto Palermo, Red laboral de Honeywell, Laboratorios de Ciudad Universitaria (Via Wi-Fi), y la casa de un integrante del grupo.
+$$H(S) = \sum_{i=1}^{n} P(E_i)\,I(E_i) = \sum_{i=1}^{n} P(E_i)\,log\left(\frac{1}{P(E_i)}\right)$$
 
-\subsection{Gráficos}
+Adicionalmente, en base a estas nociones podemos establecer un criterio para considerar que un nodo de la red se considera un \textbf{nodo distinguido} para una fuente dada: un nodo es distinguido cuando la información asociada a la aparición de su IP es menor que la entropía de dicha fuente.
 
-Una vez que capturamos el tráfico, nos propusimos gráficar y a analizar los datos obtenidos. Realizamos tres tipos de gráficos:
+\subsection{Grafo de relación entre los nodos}
+\label{subsec:grafo-relacion-nodos}
 
-$\bullet$ Grafos dirigidos:
-  En los grafos, los nodos son los IPs que aparecen en alguno de los paquetes capturados.
-  Una arista entre A y B significa que se encontro un paquete con \emph{src} A y \emph{dst} B. El peso de cada arista corresponde a la cantidad de paquetes de la forma anterior.
-  
-  Ejemplo:
-  
-  \begin{figure}[H]
-  \begin{center}
-    \includegraphics[width=0.3\linewidth]{../imgs/red-hogarena_red.png}
-    \label{fig:FedeGrafo}
-    \caption{Grafo de LAN hogareña}
-  \end{center}
-\end{figure}
+Como los paquetes ARP tienen una dirección IP fuente y una dirección IP destino, surge naturalmente la siguiente relación entre IP's: IP $x$ a IP $y$ \emph{sii} se observó algún paquete ARP con dirección fuente IP $x$ y dirección destino IP $y$.
 
-$\bullet$ Histograma:
-  Realizamos para cada una de las fuentes (\emph{src} y \emph{dst}), realizamos un histograma que muestra la cantidad de apariciones de un determinado IP en la fuente.
-  
-  Ejemplo:
-  
-  \begin{figure}[H]
-  \begin{center}
-    \includegraphics[width=0.8\linewidth]{../imgs/red-entrepiso-dc_S_src_hist.png}
-    \caption{Histograma de la serie de paquetes s\_src de la red \emph{Entrepiso-DC}.}
-    \label{fig:histograma-entrepiso-dc-s-src}
-  \end{center}
-  \end{figure}
-  
-$\bullet$ Gráfico Información:
-  Realizamos para cada una de las fuentes (\emph{src} y \emph{dst}), realizamos un gráfico donde se muestra la información de un determinado IP en la fuente. Además graficamos una recta con el valor de la entropía para comparar facilmente la información de cada IP con la entropía de la fuente. 
-  
-  Ejemplo:
-  
-  \begin{figure}  
-  \begin{center}
-    \includegraphics[width=0.8\linewidth]{../imgs/red-entrepiso-dc_S_src_info.png}
-    \caption{Gráfico de cantidad de información para cada IP s\_src de la red \emph{Entrepiso-DC}.}
-    \label{fig:informacion-entrepiso-dc-s-src}
-  \end{center}
-\end{figure}
-  
-Graficamos en forma de histogramas, y de grafos la información y entropía de $S_{dst}$ y $S_{src}$
+Por lo tanto, en base a una muestra de paquetes ARP de una LAN, podemos definir el grafo de relación entre los nodos en base a la relación anterior, proveyendo una noción complementaria de \textbf{nodo distinguido}, para aquellos nodos que tengan grados de entrada y/o salida muy elevados.

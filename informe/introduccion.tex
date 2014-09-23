@@ -1,21 +1,5 @@
-En este trabajo práctico abordamos el desarrollo de herramientas de diagnóstico de red, con el objetivo principal de analizar el protocolo ARP (Address Resolution Protocol). Este provee un método para asociar los identificadores de capa enlace y de capa de red de los dispositivos conectados a una red local; por ejemplo, vincular direcciones MAC (capa enlace) con direcciones IPv4 (capa de red).
+En este trabajo práctico abordamos el desarrollo de herramientas de diagnóstico de red, con el objetivo principal de analizar el protocolo ARP (Address Resolution Protocol). Este provee un método para asociar los identificadores de capa enlace y de capa de red de los dispositivos conectados a una LAN (red de área local); por ejemplo, vincular direcciones MAC (capa enlace) con direcciones IPv4 (capa de red).
 
-Las herramientas desarrolladas\footnote{\emph{arp\_listener\_tool.py}, \emph{arp\_analysis\_tool.py}} permiten capturar pasivamente los paquetes ARP enviados en una red local, y posteriormente analizar los datos obtenidos. Las mismas fueron escritas en \emph{Python}, utilizando el software para manipulación y análisis de paquetes \emph{Scapy}\footnote{http://www.secdev.org/projects/scapy/}.
+Las herramientas desarrolladas\footnote{\emph{arp\_listener\_tool.py}, \emph{arp\_analysis\_tool.py}} permiten capturar pasivamente los paquetes ARP enviados en una LAN, y posteriormente analizar los datos obtenidos. Las mismas fueron escritas en \emph{Python}, utilizando el software para manipulación y análisis de paquetes \emph{Scapy}\footnote{http://www.secdev.org/projects/scapy/}.
 
-Para analizar las redes locales estudiadas, utilizamos dos modelos de fuente de información:
-\vspace*{-2mm}
-
-\begin{itemize}
-  \item $S_{dst}$ = \{$s_1$ $\cdots$ $s_n$\}, siendo $s_i$ una IP que aparece como dirección destino en los paquetes ARP \emph{who-has}.
-  \item $S_{src}$ = \{$s_1$ $\cdots$ $s_n$\}, siendo $s_i$ una IP que aparece como dirección origen en los paquetes ARP \emph{who-has}.
-\end{itemize}
-
-Esto permite, dado el flujo de paquetes de una red local, definir la \textbf{información} del evento $E_i$: aparición del símbolo $s_i$ como:
-
-$$I (E_i) = log\left(\frac{1}{P(E_i)}\right)$$
-
-unidades de información, donde $P(E_i)$ es la probabilidad de que suceda $E_i$. Al usar $log_2$, la unidad obtenida se denomina bits.
-
-Utilizando la definición previa se puede definir la \textbf{entropía} de una fuente ($S_{dst}$ o $S_{src}$), representada por $H(S)$, como el valor medio ponderado de la cantidad de información de la aparición de cada símbolo $s_i$ que la compone.
-
-$$H(S) = \sum_{i=1}^{n} P(E_i)\,I(E_i) = \sum_{i=1}^{n} P(E_i)\,log\left(\frac{1}{P(E_i)}\right)$$
+Para el desarrollo de este trabajo, realizamos capturas de paquetes ARP sobre cuatro LANs de distinta naturaleza: la red abierta tipo Wi-Fi del \emph{Shopping Alto Palermo}, la red local laboral de la empresa \emph{Honeywell}, la red Wi-Fi \emph{Entrepiso-DC} disponible desde los laboratorios del Departamento de Computación, y la red hogareña de un integrante del grupo.
